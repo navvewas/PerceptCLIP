@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A unified CLIP-based framework for visual perceptual tasks such as image memorability prediction, no-reference image quality assessment, and visual emotion analysis. Achieves state-of-the-art results with minimal adaptation.">
+  <meta name="keywords" content="Visual Perceptual Tasks, Image Memorability, Image Quality Assessment, Visual Emotion Analysis, CLIP Model, Human Judgment, AI Perception, Deep Learning, Image Captioning, Multimodal Learning">
+  <meta name="robots" content="index, follow">
+  <title>REAL-MM-RAG: A Real-World Multi-Modal Retrieval Benchmark</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap">
+  <link rel="icon" href="buttons/web_logo3.png">
+  
+  <style>
+    body {
+      background-color: rgb(245, 245, 245);
+      color: rgb(49, 48, 48);
+      font-family: 'Google Sans', sans-serif;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 50px 0;
+      box-sizing: border-box;
+    }
+    .transparent-bg {
+        background: transparent !important; /* Forces transparency */
+        max-width: 70%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+    .main-container {
+      padding: 15px;
+      background-color: rgb(245, 245, 245);
+      max-width: 84%;
+      box-sizing: border-box;
+      margin-top: 50px;
+      align-items: center;
+    }
+    .section-title {
+        font-family: 'Google Sans', sans-serif;
+        font-size: 30px; /* Slightly smaller than h2 */
+        font-weight: bold;
+        line-height: 1.2;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    h1 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 56px;
+      line-height: 1.2;
+      margin-bottom: -18px;
+      margin-top: 0;
+    }
+    .custom-table {
+        width: 70%; /* Matches image and text width */
+        margin: auto; /* Centers the table */
+        border-collapse: collapse;
+        font-size: 18px;
+    }
+
+        .custom-table th, .custom-table td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+
+        .custom-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .bibtex-container {
+        max-width: 70%; /* Matches images and text width */
+        margin: auto; /* Centers the section */
+        text-align: left; /* Ensures text is aligned properly */
+    }
+
+    .bibtex-code {
+        background-color: #f4f4f4;
+        padding: 15px;
+        font-family: monospace;
+        font-size: 14px;
+        border-radius: 5px;
+        overflow-x: auto;
+        white-space: pre-wrap; /* Ensures it wraps properly */
+        word-wrap: break-word;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+
+    h2 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .author-links a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .institute {
+      margin-top: 0;
+      margin-bottom: -16px;
+    }
+
+    /* Buttons Section */
+    .image-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* Space between buttons */
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .image-item {
+      text-align: center;
+      opacity: 0.7;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .image-item img {
+      max-width: 40px; /* Match reference size */
+      height: auto;
+    }
+
+    .image-title {
+      font-size: 16px;
+      color: black;
+      margin-top: 5px;
+    }
+
+    .image-item:hover {
+      opacity: 1; /* Full visibility on hover */
+    }
+
+    /* Resized Images */
+    /* Ensures images are properly sized and background blends */
+    .resized-image {
+    max-width: 70%;  /* Ensures images do not stretch too much */
+    height: auto;
+    display: block;
+    margin: auto;
+    background: transparent; /* Removes white background effect */
+    }
+    .resized-image_2 {
+    max-width: 45%;  /* Ensures images do not stretch too much */
+    height: auto;
+    display: block;
+    margin: auto;
+    background: transparent; /* Removes white background effect */
+    }
+    /* Ensures text width matches image width */
+    .limited-width {
+    max-width: 70%;  /* Same as images */
+    margin: auto;
+    text-align: justify;
+    }
+    @media (max-width: 768px) {
+      .limited-width {
+          max-width: 100%;  /* Same as images */
+          font-size: 0.55rem; /* Slightly larger text for better readability */
+          line-height: 1.2;
+      }
+      .section-title {
+          font-size: 14px; /* Much smaller section titles on mobile */
+          margin-bottom: 10px;
+      }
+      .resized-image, .resized-image_2 {
+          max-width: 100%; /* Allow images to take full width on small screens */
+          height: auto; /* Maintain aspect ratio */
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h1>Don't Judge Before You CLIP</h1>
+    <br>
+    <h2>A Unified Approach for Perceptual Tasks</h2>
+    <p class="author-links">
+        <a href="mailto:amit.zalcher@weizmann.ac.il">Amit Zalcher<sup>*</sup></a> &nbsp;&nbsp;
+        <a href="mailto:navve.wasserman@weizmann.ac.il">Navve Wasserman<sup>*</sup></a> &nbsp;&nbsp;
+        <a href="mailto:roman.beliy@weizmann.ac.il">Roman Beliy<sup>1</sup></a> &nbsp;&nbsp;
+        <a href="mailto:oliver.heinimann@weizmann.ac.il">Oliver Heinimann<sup>1</sup></a> &nbsp;&nbsp;
+        <a href="mailto:michal.irani@weizmann.ac.il">Michal Irani<sup>1</sup></a>
+    </p>
+    <p class="institute"><sup>1</sup>Weizmann Institute of Science</p>
+    <psmall style="font-size: 15px;">*Denotes Equal Contribution</psmall>
+    <br>
+      
+
+    <!-- Buttons Section -->
+    <div class="image-container">
+      <a href="https://arxiv.org/abs/2503.13260">
+        <div class="image-item">
+          <img src="buttons/paper.jpg" alt="Paper">
+          <p class="image-title">Paper</p>
+        </div>
+      </a>
+      <a href="https://huggingface.co/PerceptCLIP">
+        <div class="image-item">
+          <img src="buttons/dataset.png" alt="Models">
+          <p class="image-title">Benchmark</p>
+        </div>
+      </a>
+      <a href="https://huggingface.co/spaces/PerceptCLIP/models_demo">
+        <div class="image-item">
+          <img src="buttons/dataset_soon.png" alt="Demo">
+          <p class="image-title">FinTrainSet</p>
+        </div>
+      </a>
+    </div>
+
+
+    <!-- Abstract Section -->
+    <h3 class="section-title">Abstract</h3>
+    <p class="limited-width">
+        Visual perceptual tasks aim to predict human judgment of images (e.g., emotions invoked by images, image quality assessment). Unlike objective tasks such as object/scene recognition, perceptual tasks rely on subjective human assessments, making its data-labeling difficult. The scarcity of such human-annotated data  results in small datasets leading to poor generalization. Typically, specialized models were designed for each perceptual task, tailored to its unique characteristics and its own training dataset.  We propose a unified architectural framework for solving multiple different perceptual tasks leveraging CLIP as a prior. Our approach is based on recent cognitive findings which indicate that CLIP correlates well with human judgment. While CLIP was explicitly trained  to align images and text, it implicitly also learned human inclinations. We attribute this to the inclusion of human-written image captions in CLIP's training data, which contain not only factual image descriptions, but inevitably also human sentiments and emotions. This makes CLIP a particularly strong prior for perceptual tasks.  Accordingly, we suggest that minimal adaptation of CLIP  suffices for solving a variety of perceptual tasks. Our simple unified framework employs a lightweight adaptation to fine-tune CLIP to each task, without requiring any task-specific architectural changes. We evaluate our approach on three tasks: (i) Image Memorability Prediction, (ii) No-reference Image Quality Assessment, and (iii) Visual Emotion Analysis. Our model achieves state-of-the-art results on all three tasks, while demonstrating improved generalization across different datasets. 
+    </p>
+
+
+    <br>
+
+    <!-- First Figure: Proposed Benchmark -->
+    <h3 class="section-title">Our Framework</h3>
+    <img class="resized-image" src="figures/teaser.pdf" alt="teaser">
+
+    <p class="limited-width">
+        Perceptual tasks rely on subjective human judgment.  
+        We show in (b) an illustration of CLIP’s training samples, which include human-written captions.  
+        These human-generated annotations contain not only factual image descriptions but also human sentiments, preferences, and emotions.  
+        This suggests that CLIP can serve as a prior for perceptual tasks.  
+        Our approach (c) leverages CLIP’s prior knowledge to address multiple perceptual tasks with minimal task-specific adaptation.  
+        We achieve state-of-the-art performance across three distinct perceptual tasks.
+      </p>
+    <br>
+
+
+
+    <br>
+
+    <!-- Second Figure: Benchmark Construction Pipeline -->
+    <h3 class="section-title">Benchmark Construction Pipeline</h3>
+    <img class="resized-image" src="figures/Data_generation_pipeline.png" alt="Benchmark Construction Pipeline">
+    <p class="limited-width">
+        Manually creating high-quality benchmarks is time-consuming and error-prone. To address this, we introduce an <b>automated pipeline</b> for generating and verifying queries tailored for <b>Retrieval-Augmented Generation (RAG) evaluation</b>. Our benchmark focuses on <b>long documents</b> with multiple pages from the same sub-domain, ensuring <b>realistic retrieval challenges</b>. The process begins with query generation using a Vision-Language Model (VLM) to create natural user-like questions. These queries are then verified by a Large Language Model (LLM) to filter out those that are too broad, overly specific, or reference exact page locations. To enhance robustness, queries undergo <b>multi-level rephrasing</b> to reduce reliance on exact wording while preserving meaning. Finally, a false negative verification step ensures each query is correctly linked to its relevant pages, preventing errors and filtering out ambiguous cases. The result is a high-quality dataset of document pages, queries, and corresponding answers, designed for robust RAG evaluation.
+    </p>
+    
+
+
+
+    <!-- <h3 class="section-title">Document Retrieval Benchmarks Comparison</h3>
+    <img class="resized-image" src="figures/table.png" alt="Benchmark Construction Pipeline"> -->
+    <h3 class="section-title">Document Retrieval Benchmarks Comparison</h3>
+    <div class="image-container">
+      <img class="resized-image transparent-bg" src="figures/table.png" alt="Benchmark Table">
+    </div>
+    <p class="limited-width">
+        Existing benchmarks lack essential properties for effective multi-modal retrieval evaluation. Most rely on <b>short documents with limited sub-domain coverage</b>, making retrieval too easy. Our benchmark addresses this by using <b>long documents with extensive sub-domain coverage</b>, ensuring the presence of many similar pages within the benchmark. We further enhance difficulty with <b>multi-level query rephrasing</b>, preventing keyword-based retrieval and promoting true semantic understanding. Unlike most existing benchmarks that use <b>QA-derived queries</b>, which are not suited for RAG, we ensure queries resemble real user inquiries through a dedicated <b>generation and filtering pipeline</b>. Finally, to combat the high false-negative rates—shown to be significant in prior benchmarks—we employ a <b>VLM-based verification</b> process for accurate labeling. The table highlights these improvements, making our benchmark the most reliable for real-world RAG evaluation.
+    </p>
+    <br>
+
+    <h3 class="section-title"> Performance of Different Models on Our Benchmark</h3>
+    <div class="image-container">
+      <img class="resized-image_2 transparent-bg" src="figures/table_2.png" alt="Benchmark Table">
+    </div>
+    <p class="limited-width">
+        We evaluate various models, including text-based and vision-based approaches, across our four benchmarks. Results, measured using NDCG@5, are reported on our final benchmark with queries rephrased at the highest level (Level 3). We also present results for our fine-tuned models trained on our proposed datasets: Rob – trained on a rephrased dataset, Tab – trained on a table-heavy dataset, and RobTab – incorporating both.    </p>
+    <br>
+
+    <h3 class="section-title"> Table-Focused Training Improves Financial Benchmarks</h3>
+    <img class="resized-image_2" src="figures/RobTab.png" alt="Benchmark Table">
+    <p class="limited-width">
+        Fine-tuning with our proposed table-heavy training set, combined with the ColPali training set (both in their original and rephrased versions) significantly enhances performance on financial benchmarks (results shown for rephrasing level 3).    </p>
+    <br>
+
+    <h3 class="section-title"> Fine-Tuning on Rephrased Training Set </h3>
+    <img class="resized-image_2" src="figures/Rob.png" alt="Benchmark Table">
+    <p class="limited-width">
+        We compare the NDCG@5 scores across rephrasing levels for baseline models (ColPali and ColQwen) against our fine-tuned models (RobCol). The results demonstrate that fine-tuning with our rephrased training data significantly enhances rephrasing robustness for both ColPali and ColQwen.   </p>
+    <br>
+
+
+
+    <div class="bibtex-container">
+    <h3 class="section-title">BibTeX</h3>
+    <pre class="bibtex-code">
+    @misc{wasserman2025realmmragrealworldmultimodalretrieval,
+        title={REAL-MM-RAG: A Real-World Multi-Modal Retrieval Benchmark}, 
+        author={Navve Wasserman and Roi Pony and Oshri Naparstek and Adi Raz Goldfarb and Eli Schwartz and Udi Barzelay and Leonid Karlinsky},
+        year={2025},
+        eprint={2502.12342},
+        archivePrefix={arXiv},
+        primaryClass={cs.IR},
+        url={https://arxiv.org/abs/2502.12342}, 
+    }
+    </pre>
+    </div>
+
+
+  </div>
+
+
+</body>
+</html>
