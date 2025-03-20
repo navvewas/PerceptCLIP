@@ -186,11 +186,11 @@
     <p class="author-links">
         <a href="mailto:amit.zalcher@weizmann.ac.il">Amit Zalcher<sup>*</sup></a> &nbsp;&nbsp;
         <a href="mailto:navve.wasserman@weizmann.ac.il">Navve Wasserman<sup>*</sup></a> &nbsp;&nbsp;
-        <a href="mailto:roman.beliy@weizmann.ac.il">Roman Beliy<sup>1</sup></a> &nbsp;&nbsp;
-        <a href="mailto:oliver.heinimann@weizmann.ac.il">Oliver Heinimann<sup>1</sup></a> &nbsp;&nbsp;
-        <a href="mailto:michal.irani@weizmann.ac.il">Michal Irani<sup>1</sup></a>
+        <a href="mailto:roman.beliy@weizmann.ac.il">Roman Beliy</a> &nbsp;&nbsp;
+        <a href="mailto:oliver.heinimann@weizmann.ac.il">Oliver Heinimann</a> &nbsp;&nbsp;
+        <a href="mailto:michal.irani@weizmann.ac.il">Michal Irani</a>
     </p>
-    <p class="institute"><sup>1</sup>Weizmann Institute of Science</p>
+    <p class="institute"><sup>1</sup>Weizmann Institute of Science</p> \\
     <psmall style="font-size: 15px;">*Denotes Equal Contribution</psmall>
     <br>
       
@@ -206,13 +206,13 @@
       <a href="https://huggingface.co/PerceptCLIP">
         <div class="image-item">
           <img src="buttons/dataset.png" alt="Models">
-          <p class="image-title">Benchmark</p>
+          <p class="image-title">Models</p>
         </div>
       </a>
       <a href="https://huggingface.co/spaces/PerceptCLIP/models_demo">
         <div class="image-item">
           <img src="buttons/dataset_soon.png" alt="Demo">
-          <p class="image-title">FinTrainSet</p>
+          <p class="image-title">Demo</p>
         </div>
       </a>
     </div>
@@ -246,10 +246,10 @@
     <br>
 
     <!-- Second Figure: Benchmark Construction Pipeline -->
-    <h3 class="section-title">Benchmark Construction Pipeline</h3>
-    <img class="resized-image" src="figures/Data_generation_pipeline.png" alt="Benchmark Construction Pipeline">
+    <h3 class="section-title">Unified Framework for Perceptual Tasks</h3>
+    <img class="resized-image" src="figures/Architecture.png" alt="Architecture">
     <p class="limited-width">
-        Manually creating high-quality benchmarks is time-consuming and error-prone. To address this, we introduce an <b>automated pipeline</b> for generating and verifying queries tailored for <b>Retrieval-Augmented Generation (RAG) evaluation</b>. Our benchmark focuses on <b>long documents</b> with multiple pages from the same sub-domain, ensuring <b>realistic retrieval challenges</b>. The process begins with query generation using a Vision-Language Model (VLM) to create natural user-like questions. These queries are then verified by a Large Language Model (LLM) to filter out those that are too broad, overly specific, or reference exact page locations. To enhance robustness, queries undergo <b>multi-level rephrasing</b> to reduce reliance on exact wording while preserving meaning. Finally, a false negative verification step ensures each query is correctly linked to its relevant pages, preventing errors and filtering out ambiguous cases. The result is a high-quality dataset of document pages, queries, and corresponding answers, designed for robust RAG evaluation.
+        Leveraging the CLIP vision encoder, following an MLP head, our architecture maintains a simple, shared structure across diverse perceptual tasks. With lightweight LoRA adaptation, it fine-tunes efficiently for each task independently, effectively exploiting CLIP’s prior perceptual knowledge.
     </p>
     
 
