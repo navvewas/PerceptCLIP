@@ -148,7 +148,7 @@
     background: transparent; /* Removes white background effect */
     }
     .resized-image_2 {
-    max-width: 45%;  /* Ensures images do not stretch too much */
+    max-width: 70%;  /* Ensures images do not stretch too much */
     height: auto;
     display: block;
     margin: auto;
@@ -174,6 +174,7 @@
           max-width: 100%;  /* Same as images */
           font-size: 0.55rem; /* Slightly larger text for better readability */
           line-height: 1.2;
+          margin: 10px auto 0 auto; /* top margin only */
       }
       .section-title {
           font-size: 14px; /* Much smaller section titles on mobile */
@@ -257,12 +258,12 @@
 
     <!-- Second Figure: Benchmark Construction Pipeline -->
     <!-- <h3 class="section-title">Unified Framework for Perceptual Tasks</h3> -->
-    <img class="resized-image" src="figures/Architecture.png" alt="Architecture">
+    <img class="resized-image_2" src="figures/Architecture.png" alt="Architecture">
     <p class="limited-width">
         Leveraging the CLIP vision encoder, following an MLP head, our architecture maintains a simple, shared structure across diverse perceptual tasks. With lightweight LoRA adaptation, it fine-tunes efficiently for each task independently, effectively exploiting CLIP’s prior perceptual knowledge.
     </p>
     
-    <h3 class="section-title">Visual Perceptual Tasks</h3>
+    <h3 class="resized-image_2">Visual Perceptual Tasks</h3>
     <img class="resized-image" src="figures/tasks.png" alt="tasks">
 
 
