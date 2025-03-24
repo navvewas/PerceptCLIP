@@ -264,7 +264,7 @@
     <img class="resized-image" src="figures/tasks.png" alt="tasks">
 
 
-    <h3 class="section-title">Model Performance on IQA Benchmarks</h3>
+    <h3 class="section-title">Image Quality Assesment</h3>
     <img class="resized-image" src="figures/table_IQA.png" alt="IQA">
     <p class="limited-width">
       Models are evaluated on seven common Image Quality Assesment benchmarks,
@@ -274,16 +274,38 @@
     </p>
 
 
-    <h3 class="section-title">Performance on Image Memorability & Emotion Classification</h3>
+    <h3 class="section-title">Image Memorability & Emotion Classification</h3>
     <img class="resized-image" src="figures/Mem_Emo.png" alt="Mem_Emo">
     <p class="limited-width">
-      *Image Memorability* -  Average SRCC and MSE across 5 splits of the LAMEM dataset are reported, 
+      Image Memorability -  Average SRCC and MSE across 5 splits of the LAMEM dataset are reported, 
       showing that our model, PerceptCLIP, surpasses all previous methods.
-      *Emotion Classification* - Accuracy results for binary and multi-class emotion classification on the EmotionROI (mean over five splits) and EmoSet datasets. 
+      Emotion Classification - Accuracy results for binary and multi-class emotion classification on the EmotionROI (mean over five splits) and EmoSet datasets. 
       Our model achieves state-of-the-art performance for both datasets.
     </p>
 
     
+
+    <h3 class="section-title">Multi-Dataset Training Improves Performance</h3>
+    <img class="resized-image" src="figures/multi_datasets.png" alt="multi_datasets">
+    <p class="limited-width">
+      The table shows the benefits of training on multiple datasets
+      within the same task, demonstrating significantly improved performance on smaller datasets. Results for all datasets (shown
+      in the Supplementary) show that these multi-dataset models achieve state-of-the-art results across all benchmarks.
+    </p>
+
+
+    <h3 class="section-title"> Attention Shift Toward Perceptual Cues</h3>
+    <img class="resized-image" src="figures/Heatmaps_visualization.png" alt="Heatmaps_visualization">
+    <p class="limited-width">
+      We present images along with the differences in their attention maps between
+      our PerceptCLIP model and the pretrained CLIP vision encoder (displaying results from critical attention heads that most influence the
+      perceptual predictions). This highlights the shift in attention, revealing how our model reallocates focus to perceptually meaningful regions
+    </p>
+
+
+   
+
+
     <!-- <h3 class="section-title">Document Retrieval Benchmarks Comparison</h3>
     <img class="resized-image" src="figures/table.png" alt="Benchmark Construction Pipeline"> -->
     <!-- <h3 class="section-title">Document Retrieval Benchmarks Comparison</h3>
